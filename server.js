@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // DB Config
-const db = require('./.yarn/config/keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 //Connect to Mongo
 mongoose

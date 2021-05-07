@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "cd client && yarn start",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && cd client && yarn build"
   },
   "author": "Sarah Spriggs",
   "license": "MIT",
@@ -16,7 +17,7 @@
     "concurrently": "^6.0.2",
     "create-react-app": "^4.0.3",
     "express": "^4.17.1",
-    "mongoose": "^5.12.4"
+    "mongoose": "^5.12.4" 
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

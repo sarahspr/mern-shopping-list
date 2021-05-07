@@ -22,17 +22,18 @@ class ShoppingList extends Component {
       <Container>
         <ListGroup>
           <TransitionGroup className="shopping-list">
-            {items.map(({id, name}) => (
-              <CSSTransition key={id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                  <Button
-                  className="remove-btn"
-                  color="danger"
-                  size="sm"
-                  onClick = {this.onDeleteClick.bind(this, id)}
-                  >
-                    &times;</Button>
+            {items.map(({_id, name}) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
+                <ListGroupItem className="d-flex justify-content-between">
                   {name}
+                    <Button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick = {this.onDeleteClick.bind(this, _id)}
+                    >
+                      &times;
+                    </Button>
                 </ListGroupItem>
               </CSSTransition>
             ))}

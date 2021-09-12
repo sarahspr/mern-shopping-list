@@ -1,9 +1,9 @@
+const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 
 // Item Model
-const Item = require('../../models/Item');
-
+let Item = require('../../models/Item');
 
 // @route GET api/items
 // @desc Get All Items
@@ -33,8 +33,21 @@ router.post('/', (req, res) => {
 // @access Public
 router.delete('/:id', (req, res) => {
   Item.findById(req.params.id)
-  .then(item => item.remove().then(() => res.json({ success: true })))
+  .then(item => item.remove()
+  .then(() => res.json({ success: true })))
   .catch(err => res.status(404).json({ success: false }));
+});
+
+// @route PUT api/items/:id
+// @desc Update an Item
+// @access Public
+router.put('/:id', (req, res) => {
+  Item.findById(req.params.id, function(err, item) {
+    item.name = req.body.name;
+      item.save()
+      .then(item => res.json(item))
+      .catch(err => res.status(400).send(err));
+  });
 });
 
 module.exports = router;
